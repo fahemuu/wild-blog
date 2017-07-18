@@ -1,7 +1,7 @@
 import moment from 'moment'
 let navbar = {
     templateUrl: 'js/components/common/navbar.html',
-    controller: ['UsersService', '$state', '$interval', function (UsersService, $interval, $state)
+    controller: ['UsersService', '$state', '$interval', function (UsersService, $state ,$interval) //l'ordre est important 
     {
         'use strict'
         angular.extend(this, {
@@ -33,8 +33,8 @@ let navbar = {
 
         }
         dateChange();
-        // $interval(dateChange,1000)
-        setInterval(dateChange, 1000);
+        $interval(dateChange,1000)
+        // setInterval(dateChange, 1000);
 
     }]
 }
