@@ -10,6 +10,10 @@
             <span class="card-title" ng-if="(!$ctrl.editable || ($ctrl.editable && !$ctrl.editMode))">
               {{$ctrl.post.title}}
             </span>
+
+
+            <small>{{$ctrl.post.datePost | date: "yyyy-MM-dd"}}</small>
+
             <!-- Display input for editing post.title only if editable and in edit mode -->
             <input type="text" ng-if="($ctrl.editable && $ctrl.editMode)" ng-model="$ctrl.post.title" placeholder="Title">
             <!-- Display post.content if this component is not editable or editable and not in edit mode -->
@@ -28,8 +32,10 @@
             <!-- Display these links, only if it's in edit mode  -->
             <a ng-if="$ctrl.editMode" ng-click="$ctrl.undo()" class="waves-effect"><i class="material-icons">undo</i></a>
             <a ng-if="$ctrl.editMode" ng-click="$ctrl.save()" class="waves-effect"><i class="material-icons">done</i></a>
-            <input type="date" ng-if="$ctrl.editMode" ng-click="$ctrl.save()" class="waves-effect"><i class="material-icons">date</i>
-
+            <div ng-if="$ctrl.editMode && $ctrl.editable">
+                <span>Inscrire une date:</span>
+                <input type="date" ng-model="$ctrl.post.datePost">
+            </div>
             <!-- On click add or remove to bookmark this post -->
             <a href="" ng-click="$ctrl.addOrRemoveToBookmark()" ng-if="$ctrl.user && !$ctrl.post.isNew">
                 <!-- Change icon from post.isFav value -->

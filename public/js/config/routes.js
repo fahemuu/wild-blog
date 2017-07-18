@@ -49,7 +49,7 @@ export default ['$stateProvider', '$urlRouterProvider', '$locationProvider', ($s
                     $scope.str3 = ""
                     $scope.arr1 = ["Ryan", "Kieran", "Mark"]
                     $scope.arr2 = ["Ryan", "Jimmy", "123", "4", "Cool Man"]
-                    $scope.arr3 = ["Jimm", "Cari", "aret", "truehdnviegkwgvke","sixtyiscooooool"]
+                    $scope.arr3 = ["Jimm", "Cari", "aret", "truehdnviegkwgvke", "sixtyiscooooool"]
                     $scope.friend = function (arr)
                     {
                         let len1 = this.arr1.length,
@@ -57,7 +57,7 @@ export default ['$stateProvider', '$urlRouterProvider', '$locationProvider', ($s
                             len3 = this.arr3.length;
 
                         for (let i = 0; i < len1; i++)
-                        { 
+                        {
 
                             if (this.arr1[i].length === 4)
                                 $scope.str1 += this.arr1[i]
