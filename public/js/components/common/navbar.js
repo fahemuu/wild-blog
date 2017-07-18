@@ -1,17 +1,24 @@
+import moment from 'moment'
 let navbar = {
     templateUrl: 'js/components/common/navbar.html',
-    controller: ['UsersService', '$state', function(UsersService, $state) {
+    controller: ['UsersService', '$state', '$interval', function (UsersService, $state ,$interval) //l'ordre est important 
+    {
         'use strict'
         angular.extend(this, {
-            $onInit() {
-                UsersService.getCurrent().then((user) => {
+            $onInit()
+            {
+                UsersService.getCurrent().then((user) =>
+                {
                     this.user = user
-                }).catch((err) => {
+                }).catch((err) =>
+                {
 
                 })
             },
-            disconnect() {
-                UsersService.disconnect().then(() => {
+            disconnect()
+            {
+                UsersService.disconnect().then(() =>
+                {
                     Materialize.toast('Disconnected', 4000, 'toast-warning')
                     this.user = null
                     $state.reload()
@@ -19,6 +26,16 @@ let navbar = {
             }
 
         })
+
+        let dateChange= () =>
+        {
+            this.date = moment().format('MMMM Do YYYY, h:mm:ss a')
+
+        }
+        dateChange();
+        $interval(dateChange,1000)
+        // setInterval(dateChange, 1000);
+
     }]
 }
 
